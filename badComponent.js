@@ -1,27 +1,17 @@
 import { Component } from 'react';
+import getData from './dataFetcher';
 
-class BadComponent extends Component {
+export default class BadComponent extends Component {
   constructor (props) {
     super(props);
     this.state = {
       data: []
     };
-  }
-
-  componentDidMount () {
     getData().then(data => this.setState({ data }));
   }
 
   addData () {
     return Promise.resolve({ text: 'foo' });
-  }
-
-  renderData () {
-    if (!this.state.data.length) {
-      return <span>Loading..</span>;
-    } else {
-      return this.state.data.map(d => <Data data={d} key={d} />);
-    }
   }
 
   render () {
@@ -32,16 +22,16 @@ class BadComponent extends Component {
           <PageControls>
             <AddDataButton onClick={() => {
               this.addData().then(newItem => {
-                this.state.data.push(newItem)
-                this.forceUpdate()
-              })
+                this.state.data.push(newItem);
+                this.forceUpdate();
+              });
             }} />
           </PageControls>
         </PageTitle>
-        {this.renderData()}
+        {!this.state.data.length && <span>Loading...</span>}
+        {this.state.data.map(d => <DataRow d={d} />)}
+        <PageFooter changeParent={this.setState} />
       </div>
     );
   }
 }
-
-export default BadComponent;
