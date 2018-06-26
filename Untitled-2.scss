@@ -1,0 +1,22 @@
+
+.container .child-container {
+  font-size: 14px;
+}
+
+
+#main .container h1.child {
+  background: red;
+}
+
+#main .container .child {
+  background: blue;
+}
+
+
+#main .child-container h1.child {
+  background: yellow;
+}
+
+.child {
+  background: green;
+}

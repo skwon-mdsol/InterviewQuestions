@@ -1,0 +1,13 @@
+/app_js
+-- components/
+-- containers/
+-- reducers/
+-- actions/
+-- utils/
+
+/app_js
+-- studyGroups/
+-- studies/
+-- sites/
+-- patients/
+-- customers/
